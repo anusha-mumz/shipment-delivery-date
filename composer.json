@@ -1,5 +1,5 @@
 {
-    "name": "mumzworld/shipment-delivery-date",
+    "name": "anusha-mumz/shipment-delivery-date",
     "description": "Magento 2 module that adds delivery date timestamp field to shipment admin page",
     "version": "1.0.0",
     "type": "magento2-module",
