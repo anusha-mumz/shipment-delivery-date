@@ -1,6 +1,6 @@
 # Shipment Delivery Date Module
 
-Adds a delivery date timestamp field to the shipment admin page.
+Magento 2 module that adds a delivery date timestamp field to the shipment admin page.
 
 ## Features
 - Adds datetime input field to shipment view page in admin
@@ -8,4 +8,9 @@ Adds a delivery date timestamp field to the shipment admin page.
 - Uses existing API endpoint: `rest/V1/shipment/delivereddate`
 
 ## Installation
-Add to composer.json require-dev section and run composer update.
+```bash
+composer require mumzworld/shipment-delivery-date --dev
+php bin/magento module:enable Mumzworld_ShipmentDeliveryDate
+php bin/magento setup:upgrade
+php bin/magento cache:flush
+```
