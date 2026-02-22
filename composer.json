@@ -1,10 +1,13 @@
 {
     "name": "mumzworld/shipment-delivery-date",
-    "description": "Adds delivery date timestamp field to shipment admin page",
+    "description": "Magento 2 module that adds delivery date timestamp field to shipment admin page",
     "version": "1.0.0",
     "type": "magento2-module",
     "require": {
-        "php": "~8.1"
+        "php": "~8.1",
+        "magento/framework": ">=102.0.0",
+        "magento/module-sales": ">=102.0.0",
+        "magento/module-shipping": ">=100.4.0"
     },
     "license": [
         "proprietary"
@@ -22,5 +25,11 @@
         "psr-4": {
             "Mumzworld\\ShipmentDeliveryDate\\": ""
         }
-    }
+    },
+    "keywords": [
+        "magento2",
+        "shipment",
+        "delivery-date",
+        "admin"
+    ]
 }
