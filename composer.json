@@ -1,0 +1,26 @@
+{
+    "name": "mumzworld/shipment-delivery-date",
+    "description": "Adds delivery date timestamp field to shipment admin page",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "require": {
+        "php": "~8.1"
+    },
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+          "name": "Anusha Kumaraswamy",
+          "email": "anushaakumarr@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mumzworld\\ShipmentDeliveryDate\\": ""
+        }
+    }
+}

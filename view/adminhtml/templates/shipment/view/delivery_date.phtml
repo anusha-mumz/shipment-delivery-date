@@ -1,0 +1,69 @@
+<?php
+/** @var \Mumzworld\ShipmentDeliveryDate\Block\Adminhtml\Shipment\View\DeliveryDate $block */
+$deliveryDate = $block->getDeliveryDate();
+$formattedDate = $deliveryDate ? date('Y-m-d\TH:i', $deliveryDate) : '';
+?>
+
+<div class="admin__page-section-item order-shipment-delivery-date">
+    <div class="admin__page-section-item-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Date')) ?></span>
+    </div>
+    <div class="admin__page-section-item-content">
+        <div class="delivery-date-form">
+            <input type="datetime-local" 
+                   id="delivery_date_input" 
+                   name="delivery_date" 
+                   value="<?= $block->escapeHtmlAttr($formattedDate) ?>"
+                   class="admin__control-text" />
+            <button type="button" 
+                    id="save_delivery_date" 
+                    class="action-default scalable save primary"
+                    style="margin-left: 10px;">
+                <span><?= $block->escapeHtml(__('Save Delivery Date')) ?></span>
+            </button>
+            <span id="delivery_date_message" style="margin-left: 10px;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+require(['jquery', 'Magento_Ui/js/modal/alert'], function($, alert) {
+    $('#save_delivery_date').on('click', function() {
+        var deliveryDate = $('#delivery_date_input').val();
+        var saveUrl = '<?= $block->escapeJs($block->getSaveUrl()) ?>';
+        
+        if (!deliveryDate) {
+            alert({
+                content: '<?= $block->escapeJs(__('Please select a delivery date')) ?>'
+            });
+            return;
+        }
+
+        $.ajax({
+            url: saveUrl,
+            type: 'POST',
+            data: {
+                delivery_date: deliveryDate,
+                form_key: FORM_KEY
+            },
+            showLoader: true,
+            success: function(response) {
+                var messageEl = $('#delivery_date_message');
+                if (response.success) {
+                    messageEl.html('<span style="color: green;">' + response.message + '</span>');
+                } else {
+                    messageEl.html('<span style="color: red;">' + response.message + '</span>');
+                }
+                setTimeout(function() {
+                    messageEl.html('');
+                }, 3000);
+            },
+            error: function() {
+                alert({
+                    content: '<?= $block->escapeJs(__('An error occurred while saving')) ?>'
+                });
+            }
+        });
+    });
+});
+</script>
